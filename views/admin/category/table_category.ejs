@@ -1,0 +1,57 @@
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <!-- Button trigger modal -->
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-toggle="modal"
+      data-target="#add-modal"
+    >
+      Add New Category
+    </button>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table
+        class="table table-bordered"
+        id="dataTable"
+        width="100%"
+        cellspacing="0"
+      >
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% category.forEach((cat,i) => { %>
+          <tr>
+            <td><%= i+1 %></td>
+            <td><%= cat.name %></td>
+            <td>
+              <form
+                action="/admin/category/<%= cat.id %>?_method=DELETE"
+                method="POST"
+              >
+                <a
+                  href="javascript:void()"
+                  class="btn btn-warning btn-circle btn-sm button-update"
+                  data-id="<%= cat.id %> "
+                  data-name="<%= cat.name %> "
+                  ><i class="fas fa-edit"></i
+                ></a>
+                <button type="submit" class="btn btn-danger btn-circle btn-sm">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </form>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

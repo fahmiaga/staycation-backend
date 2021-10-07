@@ -1,0 +1,70 @@
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-toggle="modal"
+      data-target="#add-modal"
+    >
+      Add New Bank
+    </button>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table
+        class="table table-bordered"
+        id="dataTable"
+        width="100%"
+        cellspacing="0"
+      >
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Bank Name</th>
+            <th>No. Rekening</th>
+            <th>Pemilik</th>
+            <th>logo</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% banks.forEach((bank,i) => { %>
+          <tr>
+            <td><%= i + 1 %></td>
+            <td><%= bank.nameBank %></td>
+            <td><%= bank.nomorRekening %></td>
+            <td><%= bank.name %></td>
+            <td>
+              <img
+                src="http://localhost:3000/<%= bank.imageUrl%>"
+                alt="imageUrl"
+                width="70px"
+              />
+            </td>
+            <td>
+              <form
+                action="/admin/bank/<%= bank.id %>?_method=DELETE"
+                method="POST"
+              >
+                <a
+                  href="javascript:void()"
+                  class="btn btn-warning btn-circle btn-sm button-update"
+                  data-id="<%= bank.id %>"
+                  data-name="<%= bank.name %>"
+                  data-namebank="<%= bank.nameBank %>"
+                  data-nomorrekening="<%= bank.nomorRekening %>"
+                  ><i class="fas fa-edit"></i
+                ></a>
+                <button type="submit" class="btn btn-danger btn-circle btn-sm">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </form>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

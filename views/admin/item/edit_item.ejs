@@ -1,0 +1,90 @@
+<div
+  class="tab-pane fade col-6 show active"
+  id="add-item"
+  role="tabpanel"
+  aria-labelledby="profile-tab"
+>
+  <form
+    action="/admin/item/<%= items.id %>?_method=PUT "
+    method="POST"
+    enctype="multipart/form-data"
+  >
+    <div class="form-group">
+      <label for="exampleInputEmail1">Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        name="title"
+        aria-describedby="emailHelp"
+        value="<%= items.title %> "
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Price</label>
+      <input
+        type="number"
+        class="form-control"
+        id="nomorRekening"
+        name="price"
+        aria-describedby="emailHelp"
+        value="<%= items.price %>"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">City</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        name="city"
+        aria-describedby="emailHelp"
+        value="<%= items.city %> "
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Category</label>
+      <select
+        type="text"
+        class="form-control"
+        id="name"
+        name="categoryId"
+        aria-describedby="emailHelp"
+        required
+      >
+        <option value="<%= items._id %> "><%= items.name %></option>
+        <% categories.forEach(category => { %>
+        <option value="<%= category.id  %> "><%= category.name %></option>
+        <% }) %>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Image</label>
+      <input
+        type="file"
+        class="form-control"
+        id="Image"
+        name="image"
+        aria-describedby="emailHelp"
+        multiple
+      />
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">City</label>
+      <textarea
+        type="text"
+        class="form-control"
+        id="name"
+        name="about"
+        aria-describedby="emailHelp"
+        required
+      >
+      <%= items.description %>
+      </textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+</div>
