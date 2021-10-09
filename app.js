@@ -10,12 +10,15 @@ const flash = require("connect-flash");
 
 // mongoose
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/db_staycation", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-});
+mongoose.connect(
+  "mongodb+srv://fahmiaga:fahmi@cluster0.pb8f6.mongodb.net/db_staycation?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+  }
+);
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 
